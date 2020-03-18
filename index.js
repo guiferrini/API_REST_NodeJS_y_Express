@@ -111,6 +111,27 @@ app.put('/usuario', function (req, res) {
     res.send(respuesta);
 });
 
+app.delete('/usuario', function (req, res) {
+    if(usuario.nombre === '' || usuario.apelido === '') {
+        respuesta = {
+            error: true,
+            codigo: 501,
+            mensaje: 'el usuario no ha sido creado'
+        };
+    } else {
+        respuesta = {
+            error: false,
+            codigo: 200,
+            mensaje: 'Usuario Eliminado'
+        };
+        usuario = {
+            nombre: '',
+            apelido: ''
+        };
+    }
+    res.send(respuesta);
+});
+
 let teste = {/*Exemplo de funcionalidades de GET e POST
 app.get('/', function (req, res) { //declaracion, ruta de entrada p express, obtem a petição - o q vai aparecer na tela...
     res.send('Saluto desde express');
