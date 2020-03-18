@@ -51,7 +51,6 @@ app.get('/usuario', function (req, res) {
 });
 
 
-
 let teste = {/*Exemplo de funcionalidades de GET e POST
 app.get('/', function (req, res) { //declaracion, ruta de entrada p express, obtem a petição - o q vai aparecer na tela...
     res.send('Saluto desde express');
