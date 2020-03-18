@@ -50,6 +50,35 @@ app.get('/usuario', function (req, res) {
     res.send(respuesta);
 });
 
+app.post('/usuario', function (req, res) {
+    if(!req.body.nombre || !req.body.apelido) {
+        respuesta = {
+            error: true,
+            codigo: 502,
+            mensaje: 'El campo nombre y apellido son requeridos'
+        };
+    } else {
+        if(usuario.nombre !== '' || usuario.apelido !== '') {
+            respuesta = {
+                error: true,
+                codigo: 503,
+                mensaje: 'El usuario ya fue creado previamente'
+            };
+        } else {
+            usuario = {
+                nombre: req.body.nombre,
+                apelido: req.body.apelido
+            };
+            respuesta = {
+                error: false,
+                codigo: 200,
+                respuesta: usuario
+            };
+        }
+    }
+
+    res.send(respuesta);
+});
 
 let teste = {/*Exemplo de funcionalidades de GET e POST
 app.get('/', function (req, res) { //declaracion, ruta de entrada p express, obtem a petição - o q vai aparecer na tela...
